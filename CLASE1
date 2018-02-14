@@ -1,0 +1,20 @@
+#sample es para crear datos aleatorios 
+#rango de los datos va despues de sample (rango, numero de datos, replace para ver si se puede repater datos  no )
+pob<-sample(100:120,15,replace = F)
+pob
+#lo convertimos en serie de tiempo 
+# s frequency = 1 porque es anual y 12 si es mensual y start año en que inicia la serie de tiempo 
+#nombre asiganacion (informacion )
+pobts<-ts(pob,frequency = 1,start = (2000))
+end(pobts)## año en que termina 
+start(pobts)#año en que inicia 
+plot(pobts) #para graficar 
+plot(aggregate(pobts)) # invetigar 
+###bajar la info de inegi
+########INFORMALIDAD
+##importar csv 
+infor<-read.csv("C://Users//USUARIO//Desktop//infor.csv")
+##convetir datas en series de tiempo con la informacion que tenemos 
+infor3<-ts(infor, frequency=4,start = (2005))## =4 porque es trimestral 
+plot(infor3)
+plot(infor3,ylim=c(55,70))### para cambiar el limite del eje y 
