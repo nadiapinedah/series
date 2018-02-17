@@ -1,0 +1,50 @@
+aa <-AirPassengers
+plot(aa)
+plot(aggregate(aa))
+##con el aggregate se muestra la tendenccia
+##de la serie de teimpo
+boxplot(aa~cycle(aa))### se expone una grafica de caja por periodo 
+##de la serie de tiempo 
+
+deso<-read.csv("C://Users//USUARIO//Desktop//enoe.csv")
+View(deso)
+desot <- ts(deso,frequency = 4,start= (2005))
+require(foreign)
+desanual<-aggregate(desot)/4
+x11()
+layout(1:2)
+plot(desot)
+plot(desanual)
+deso1<- window(desot,start=c(2008,2,end=c(2015,4))####dividir o cortar la serie de tiempo 
+#### archivo de docupe la tasa de ocupacion parcial  y deso, tasa de asalariados y  de tl 1
+ejercicio<-read.csv("C://Users//USUARIO//Desktop//enoee2.csv")
+parcailts<-ts(ejercicio[,1],frequency = 4,start =2005 )
+asalariadots<-ts(ejercicio[,2],frequency = 4,start=2005)
+til1ts<-ts(ejercicio[,3],frequency = 4,start = 2005)
+multiple<-ts.intersect(parcailts,asalariadots,til1ts)###declaramos una serie de tiempo MULTIPLE en R
+plot(multiple)### grafica multiple 
+
+
+#########EJERCICIO##########
+##### obtenga de donde quieran 4 series de tiempo con minimo 30 de datos 
+##### las series de tiempo que tener sustento para compararlas 
+###una vez que obtengan estas bases tien que 
+#####importar , declararlas como serie de tiempo separdo 
+#### graficarlas , despues crear una serie de tiempo multiple y graficarlas 
+#####como serie de tiempo multiple 
+### por ultimo eligen 2 series de tiempo y apliquen el agregate para cononcer su tendencia y hacer las graficas de caja e interpretar 
+#########los periodos de estas series 
+
+industria<-read.csv("C:/Users/USUARIO/Desktop/industria.csv")
+manufacturera<-ts(industria[,1],frequency = 12,start=2006)
+alimenatariats<-ts(industria[,2],frequency = 12,start=2006)
+bebidasts<-ts(industria[,3],frequency = 12,start = 2006)
+insumos<-ts(industria[,4],frequency = 12,start = 2006)
+multiple<-ts.intersect(manufacturera,alimenatariats,bebidasts,insumos)###declaramos una serie de tiempo MULTIPLE en R
+plot(multiple)### grafica multiple 
+plot(aggregate(alimenatariats))
+plot(aggregate(bebidasts))
+boxplot(alimenatariats)
+boxplot(bebidasts)
+############ el la primer grafica que esobre alimentos tiene una tendecia positiva, miestras que la de bebidas y del tabaco 
+######## muestra una tendencia negativa para los años de analisis 
