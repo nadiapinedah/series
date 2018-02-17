@@ -1,0 +1,58 @@
+### base con la que trabajaremos
+### airpassenger
+install.packages("forecast")
+require(forecast)
+help("AirPassengers")
+######################## ver la base
+View(AirPassengers)
+### con ?? busca en internet la funcion
+??AirPassengers
+class(AirPassengers)
+### start desde donde inicia la serie de tiempo
+start(AirPassengers)
+##### imprime desde donde va la serie de la base de datos
+print(AirPassengers)
+length(AirPassengers)
+## muestre los primeros 8 datos de la serie
+head(AirPassengers, n=8)
+## muestra los ultimos 8 datos de la serie
+tail(AirPassengers,n=8)
+## grafica
+## nos muestra una serie de tiempo de tendencia creciente y estacional
+plot(AirPassengers,xlab="años",ylab="numero de pasajeros",type= "l")
+### ejercicio 
+## de la pagina del inegi bajar la tasa informalidad laboral 
+# en valores relativos a nivel nacional, todos los trimestres
+### desde el 2005 al 2017
+### esta base la importan a r y declaran serie de tiempo con el 
+# inicio y fin y frecuencia de la st
+## una vez que hayan declarado la serie usar la funcion
+# print, lenth, head y tail (con 10 datos) y explicarlas
+## graficar la serie de tiempo con 3 tipos de graficas diferentes
+# y tres colores, ademas iunvestigar y usar las funciones
+## time,deltat, cycle y frequency y explicar para que sirven
+
+#####################################
+base <-read.csv("C://Users//USUARIO//Documents//g//informal.csv")
+serie<- ts(base,frequency = 4,start = (2005)) ## ts= lo conviertes en serie de tiempo frequency=las veces que se repite en el año
+## start= año en que empieza
+print(serie)
+length(serie)
+head(serie, n=10)## los primeros 10 datos de la serie
+## en este caso del año 2005 al 2007
+tail(serie, n=10) ## nos da los ultimos 10 datos de la serie
+### nos da los ultimos datos de la serie del 2015 al 2017
+plot(AirPassengers,xlab="años",ylab="tasas",type= "l",col=("blue"))
+plot(AirPassengers,xlab="años",ylab="tasas",type= "s",col=("red"))
+plot(AirPassengers,xlab="años",ylab="tasas",type= "b",col=("purple"))
+
+time(serie)
+## sirve para ver en tiempo real como esta la serie
+
+deltat(serie)
+help("deltat")
+### posicione
+cycle(serie)
+###ciclo da las posiciones en el ciclo de cada observación
+frequency(serie)
+###la frecuencia devuelve el número de muestras por unidad de tiempo y separa el intervalo de tiempo entre las observaciones
