@@ -1,0 +1,57 @@
+###metodos lineales  de pronosoticos 
+#son la aplicacion de pronosticos lineales como los metodos de la media,el ingenuo,el ingenuo estacional
+#y el de deriva de pronostico
+#---------INGENUO-----------
+#ESTA BASADO EN LA ULTIMA OBSERVACION que arroja la serie de tiempo,
+#es decir este pronosticoasumeque la observacion mas importante es
+#la ultima
+######FUNCIOM EN R---- NAIVE(SERIE,H=NUMPRONOSTIOOS )
+#H=NUMERO DE PRONOSTICOS QUE REQUIERE
+#----------------METODO DE LA MEDIA-----------
+#este metodo le da el mismo Peso a todos los datos u observaciones,
+#se asume con este metodo que todas las observaciones
+#se asume con este metodo que todas las observaciones 
+#tiene la misma importancia por lo que el prponostico es un promedio de todas las observaciones
+#FUNCION EN R-----------mean(serie,h=numero de pronosticos)
+#------------------------------------------INGENUO ESTACIONAL----------
+#ESTE METODO se utiliza en sT con la alta estacionaliada este procesos
+#consiste en darle el mayo peso a la mayor ponderacion al dato
+#del mismo periodo en el año anterior , p ejem, triumestre 2 del 200 es ;
+##igual al trimeste 2 del 2006
+##FUNCION EN R------------SNAIVE(SERIE,H=NUMERO DE PRONOSTICOS)
+##3------------------METODO DE LA DERIVA------------
+#ESTE METODO CONSISTE EN QUE EL PRONOSTICO PUEDE INCREMENETAR o
+#reducirse sobre el tiempo, dependiendo del promedio de los cambios
+#historicos de la ST
+#---------------FUCNION EN R----------rwf(serie,h=num de pronostico,drift=TRUE)
+#---------------EJERCICIO-------
+deso<-read.csv("C:/Users/USUARIO/Documents/deso.csv")
+dests<-ts(deso,start = 2005,frequency = 4)
+install.packages("fpp")
+require(fpp)#############permite genarar los modelos 
+dests
+desocmod1<-meanf(dests,h=10)#primero llama la serie de tiempo
+desocmod2<-naive(dests,h=10)
+desocmod3<-snaive(dests,h=10)
+desocmod4<-rwf(dests,h=10,drift = TRUE)####como r reconoce un metodo de la deriva con base en los cambios 
+x11()
+plot(desocmod1,main = "Tasa de desocupacion trimestral",col="green")
+lines(desocmod1$mean,col="green")########pronositcos 
+lines(desocmod2$mean,col="black")
+lines(desocmod3$mean,col="orange")
+lines(desocmod4$mean,col="pink")
+memory.size(14000)
+######datos ajustados
+#fitted ajuste ajustar a los adatos reales con este 
+x11()
+plot(desocmod1,main="Tasa de desocupacion trimestral")
+lines(desocmod2$fitted,col="yellow")
+lines(desocmod3$fitted,col="red")
+lines(desocmod4$fitted,col="blue")
+legend("toploft",lty = 1,col = c(5,6,7,8),legend = c("media","ingenuo","ingenuo estacional","deriva"))
+names(desocmod1)
+
+########ultimo año precio de cierre de invex decision con base a los pronosticos 
+
+
+
