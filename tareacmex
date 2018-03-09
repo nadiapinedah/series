@@ -1,0 +1,30 @@
+#-------------EJERCICIO----------
+CMEX<-read.csv("C:/Users/phdan_000/Documents/Libro1.csv")
+CMEXts<-ts(CMEX,frequency = 252,start = 2017,end=2018)
+x11()
+plot(CMEXts)
+install.packages("fpp")
+require(fpp)#############permite genarar los modelos 
+cmexmod1<-meanf(CMEXts,h=10)#primero llama la serie de tiempo
+cmexmod2<-naive(CMEXts,h=10)
+cmexmod3<-snaive(CMEXts,h=10)
+cmexmod4<-rwf(CMEXts,h=10,drift = TRUE)####como r reconoce un metodo de la deriva con base en los cambios 
+x11()
+plot(cmexmod1,main = "ACCIONES CEMEX",col="green")
+lines(cmexmod1$mean,col="green")########pronositcos 
+lines(dcmexmo21$mean,col="black")
+lines(cmexmod3$mean,col="orange")
+lines(cmexmod4$mean,col="pink")
+memory.size(14000)
+######datos ajustados
+#fitted ajuste ajustar a los adatos reales con este 
+x11()
+plot(cmexmod1,main="Acciones CEMEX")
+lines(cmexmod2$fitted,col="yellow")
+lines(cmexmod3$fitted,col="red")
+lines(cmexmod4$fitted,col="blue")
+legend("toploft",lty = 1,col = c(5,6,7,8),legend = c("media","ingenuo","ingenuo estacional","deriva"))
+names(cmexmod1)
+#------------CONCLUsIONES--------------
+#El modelo que eligo es el modelo 3 porque genera un pronostico mas acercado a la tendencia que se veia
+#porque es el que mas se ajusta a mi serie es el modelo 4
