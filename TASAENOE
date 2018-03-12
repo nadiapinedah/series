@@ -1,0 +1,51 @@
+##------------------La Tasa de Desocupación (TD)--------------------- 
+#que se refiere al porcentaje 
+#de la Población Económicamente Activa (PEA)
+#que no trabajó siquiera una hora durante la semana de referencia
+#de la encuesta pero manifestó su disposición para hacerlo e hizo
+#alguna actividad por obtener empleo
+
+#--------------La Tasa de Trabajo Asalariado----------------
+#representa a la población
+#que percibe de la unidad económica para la que trabaja un sueldo,
+#salario o jornal, por las actividades realizadas. 
+
+~#Tasas relacionadas con la informalidad 
+  #------------La Tasa de Informalidad Laboral 1 (TIL1)-------------------
+#, se refiere a la suma, sin duplicar, de los que son laboralmente vulnerables
+#por la naturaleza de la unidad económica para la que trabajan,
+#con aquellos cuyo vínculo o dependencia laboral no es reconocido por su
+  #fuente de trabajo. Así, en esta tasa se incluye -además del 
+  #componente que labora en micronegocios no registrados o sector informal
+  #a otras modalidades análogas como los ocupados por cuenta propia
+  #en la agricultura de subsistencia, así como a trabajadores que laboran
+  #sin la protección de la seguridad social y cuyos servicios son utilizados
+  #por unidades económicas registradas. 							
+#fuente: inegi
+
+require(foreign)
+base<-read.dbf("C:/Users/phdan_000/Downloads/sdemt417.dbf")
+nayarit<-subset(base,ENT=="18")
+PEA<-subset(nayarit,CLASE1=="1")
+DES<-subset(nayarit,CLASE2=="2")
+X <- (196/5570)*100
+X
+
+base2<-read.dbf("C:/Users/phdan_000/Music/sdemt317.dbf")
+nayarit2<-subset(base2,ENT=="18")
+PEA2<-subset(nayarit2,CLASE1="1")
+DES2<-subset(nayarit2,CLASE2=="2")
+X2<-(215/11414)*100
+X2
+base3<-read.dbf("C:/Users/phdan_000/Music/sdemt217.dbf")
+nayarit3<-subset(base2,ENT=="18")
+PEA3<-subset(nayarit3,CLASE1="1")
+DES3<-subset(nayarit3,CLASE2=="2")
+X2<-(215/11414)*100
+X2
+base4<-read.dbf("C:/Users/phdan_000/Music/sdemt117.dbf")
+nayarit4<-subset(base2,ENT=="18")
+PEA4<-subset(nayarit3,CLASE1="1")
+DES4<-subset(nayarit3,CLASE2=="2")
+X2<-(215/11414)*100
+X2
