@@ -1,0 +1,632 @@
+##------------------La Tasa de Desocupación (TD)--------------------- 
+#que se refiere al porcentaje 
+#de la Población Económicamente Activa (PEA)
+#que no trabajó siquiera una hora durante la semana de referencia
+#de la encuesta pero manifestó su disposición para hacerlo e hizo
+#alguna actividad por obtener empleo
+
+#--------------La Tasa de Trabajo Asalariado----------------
+#representa a la población
+#que percibe de la unidad económica para la que trabaja un sueldo,
+#salario o jornal, por las actividades realizadas. 
+
+~#Tasas relacionadas con la informalidad 
+  #------------La Tasa de Informalidad Laboral 1 (TIL1)-------------------
+#, se refiere a la suma, sin duplicar, de los que son laboralmente vulnerables
+#por la naturaleza de la unidad económica para la que trabajan,
+#con aquellos cuyo vínculo o dependencia laboral no es reconocido por su
+  #fuente de trabajo. Así, en esta tasa se incluye -además del 
+  #componente que labora en micronegocios no registrados o sector informal
+  #a otras modalidades análogas como los ocupados por cuenta propia
+  #en la agricultura de subsistencia, así como a trabajadores que laboran
+  #sin la protección de la seguridad social y cuyos servicios son utilizados
+  #por unidades económicas registradas. 							
+#fuente: inegi
+install.packages("foreing")
+require(foreign)
+
+base<-read.dbf("C:/Users/phdan_000/Downloads/sdemt417.dbf")
+nayarit<-subset(base,ENT=="18")
+PEA<-subset(nayarit,CLASE1=="1")
+DES<-subset(nayarit,CLASE2=="2")
+X <- (196/5570)*100
+X
+
+base2<-read.dbf("C:/Users/phdan_000/Music/sdemt317.dbf")
+nayarit2<-subset(base2,ENT=="18")
+PEA2<-subset(nayarit2,CLASE1="1")
+DES2<-subset(nayarit2,CLASE2=="2")
+X2<-(215/11414)*100
+X2
+base3<-read.dbf("C:/Users/phdan_000/Music/sdemt217.dbf")
+nayarit3<-subset(base3,ENT=="18")
+PEA3<-subset(nayarit3,CLASE1="1")
+DES3<-subset(nayarit3,CLASE2=="2")
+X3<-(186/11648)*100
+X3
+
+base4<-read.dbf("C:/Users/phdan_000/Music/sdemt117.dbf")
+nayarit4<-subset(base4,ENT=="18")
+PEA4<-subset(nayarit4,CLASE1="1")
+DES4<-subset(nayarit4,CLASE2=="2")
+X4<-(215/11630)*100
+X4
+
+#2016
+base5<-read.dbf("C:/Users/phdan_000/Music/sdemt416.dbf")#4
+nayarit5<-subset(base5,ENT=="18")
+PEA5<-subset(nayarit5,CLASE1="1")
+DES5<-subset(nayarit5,CLASE2=="2")
+X5<-(213/11757)*100
+X5
+
+base6<-read.dbf("C:/Users/phdan_000/Music/sdemt316.dbf")#3
+nayarit6<-subset(base6,ENT=="18")
+PEA6<-subset(nayarit6,CLASE1="1")
+DES6<-subset(nayarit6,CLASE2=="2")
+X6<-(232/11790)*100
+X6
+
+base7<-read.dbf("C:/Users/phdan_000/Music/sdemt216.dbf")#2
+nayarit7<-subset(base2,ENT=="18")
+PEA7<-subset(nayarit3,CLASE1="1")
+DES7<-subset(nayarit3,CLASE2=="2")
+X7<-(186/11648)*100
+X7
+
+base8<-read.dbf("C:/Users/phdan_000/Music/sdemt116.dbf")#1
+nayarit8<-subset(base8,ENT=="18")
+PEA8<-subset(nayarit8,CLASE1="1")
+DES8<-subset(nayarit8,CLASE2=="2")
+X8<-(222/11921)*100
+X8
+#2015
+
+base9<-read.dbf("C:/Users/phdan_000/Music/sdemt415.dbf")#4
+nayarit9<-subset(base9,ENT=="18")
+PEA9<-subset(nayarit9,CLASE1="1")
+DES9<-subset(nayarit9,CLASE2=="2")
+X9<-(255/11964)*100
+X9
+
+base10<-read.dbf("C:/Users/phdan_000/Music/sdemt315.dbf")#3
+nayarit10<-subset(base10,ENT=="18")
+PEA10<-subset(nayarit10,CLASE1="1")
+DES10<-subset(nayarit10,CLASE2=="2")
+X10<-(348/11923)*100
+X10
+
+base11<-read.dbf("C:/Users/phdan_000/Music/SDEMT215.dbf")#2
+nayarit11<-subset(base11,ENT=="18")
+PEA11<-subset(nayarit11,CLASE1="1")
+DES11<-subset(nayarit11,CLASE2=="2")
+X11<-(298/12058)*100
+X11
+
+
+base12<-read.dbf("C:/Users/phdan_000/Music/SDEMT115.dbf")#1
+nayarit12<-subset(base12,ENT=="18")
+PEA12<-subset(nayarit12,CLASE1="1")
+DES12<-subset(nayarit12,CLASE2=="2")
+X12<-(266/12140)*100
+X12
+
+#2014
+
+base14<-read.dbf("C:/Users/phdan_000/Music/sdemt414.dbf")#4
+nayarit14<-subset(base14,ENT=="18")
+PEA14<-subset(nayarit14,CLASE1="1")
+DES14<-subset(nayarit14,CLASE2=="2")
+X14<-(279/12118)*100
+X14
+
+base15<-read.dbf("C:/Users/phdan_000/Music/sdemt314.dbf")#3
+nayarit15<-subset(base15,ENT=="18")
+PEA15<-subset(nayarit15,CLASE1="1")
+DES15<-subset(nayarit15,CLASE2=="2")
+X15<-(387/12093)*100
+X15
+
+base16<-read.dbf("C:/Users/phdan_000/Music/sdemt214.dbf")#2
+nayarit16<-subset(base16,ENT=="18")
+PEA16<-subset(nayarit16,CLASE1="1")
+DES16<-subset(nayarit16,CLASE2=="2")
+X16<-(305/12158)*100
+X16
+
+base17<-read.dbf("C:/Users/phdan_000/Music/sdemt114.dbf")#1
+nayarit17<-subset(base17,ENT=="18")
+PEA17<-subset(nayarit17,CLASE1="1")
+DES17<-subset(nayarit17,CLASE2=="2")
+X17<-(320/12010)*100
+X17
+
+#2013
+
+base18<-read.dbf("C:/Users/phdan_000/Music/sdemt413.dbf")#4
+nayarit18<-subset(base18,ENT=="18")
+PEA18<-subset(nayarit18,CLASE1="1")
+DES18<-subset(nayarit18,CLASE2=="2")
+X18<-(295/11812)*100
+X18
+
+base19<-read.dbf("C:/Users/phdan_000/Music/sdemt313.dbf")#3
+nayarit19<-subset(base19,ENT=="18")
+PEA19<-subset(nayarit19,CLASE1="1")
+DES19<-subset(nayarit19,CLASE2=="2")
+X19<-(323/11628)*100
+X19
+
+base20<-read.dbf("C:/Users/phdan_000/Music/sdemt213.dbf")#2
+nayarit20<-subset(base20,ENT=="18")
+PEA20<-subset(nayarit20,CLASE1="1")
+DES20<-subset(nayarit20,CLASE2=="2")
+X20<-(293/11465)*100
+X20
+
+base200<-read.dbf("C:/Users/phdan_000/Music/sdemt113.dbf")#1
+nayarit200<-subset(base200,ENT=="18")
+PEA200<-subset(nayarit200,CLASE1="1")
+DES200<-subset(nayarit200,CLASE2=="2")
+X200<-(261/11458)*100
+X200
+
+#2012
+
+base21<-read.dbf("C:/Users/phdan_000/Music/sdemt412.dbf")#4
+nayarit21<-subset(base21,ENT=="18")
+PEA21<-subset(nayarit21,CLASE1="1")
+DES21<-subset(nayarit21,CLASE2=="2")
+X21<-(301/11436)*100
+X21
+
+base22<-read.dbf("C:/Users/phdan_000/Music/sdemt312.dbf")#3
+nayarit22<-subset(base22,ENT=="18")
+PEA22<-subset(nayarit22,CLASE1="1")
+DES22<-subset(nayarit22,CLASE2=="2")
+X22<-(308/11706)*100
+X22
+
+base23<-read.dbf("C:/Users/phdan_000/Music/sdemt212.dbf")#2
+nayarit23<-subset(base23,ENT=="18")
+PEA23<-subset(nayarit23,CLASE1="1")
+DES23<-subset(nayarit23,CLASE2=="2")
+X23<-(282/11820)*100
+X23
+
+base24<-read.dbf("C:/Users/phdan_000/Music/sdemt112.dbf")#1
+nayarit24<-subset(base24,ENT=="18")
+PEA24<-subset(nayarit24,CLASE1="1")
+DES24<-subset(nayarit24,CLASE2=="2")
+X24<-(273/11824)*100
+X24
+
+#2011
+
+base25<-read.dbf("C:/Users/phdan_000/Music/sdemt411.dbf")#4
+nayarit25<-subset(base25,ENT=="18")
+PEA25<-subset(nayarit3,CLASE1="1")
+DES25<-subset(nayarit3,CLASE2=="2")
+X25<-(186/11648)*100
+X25
+
+base26<-read.dbf("C:/Users/phdan_000/Music/sdemt311.dbf")#3
+nayarit26<-subset(base26,ENT=="18")
+PEA26<-subset(nayarit26,CLASE1="1")
+DES26<-subset(nayarit26,CLASE2=="2")
+X26<-(304/11621)*100
+X26
+
+base27<-read.dbf("C:/Users/phdan_000/Music/sdemt211.dbf")#2
+nayarit27<-subset(base27,ENT=="18")
+PEA27<-subset(nayarit27,CLASE1="1")
+DES27<-subset(nayarit27,CLASE2=="2")
+X27<-(245/11652)*100
+X27
+
+base28<-read.dbf("C:/Users/phdan_000/Music/sdemt111.dbf")#1
+nayarit28<-subset(base28,ENT=="18")
+PEA28<-subset(nayarit28,CLASE1="1")
+DES28<-subset(nayarit28,CLASE2=="2")
+X28<-(220/11465)*100
+X28
+#2010
+
+base29<-read.dbf("C:/Users/phdan_000/Music/sdemt410.dbf")#4
+nayarit29<-subset(base29,ENT=="18")
+PEA29<-subset(nayarit29,CLASE1="1")
+DES29<-subset(nayarit29,CLASE2=="2")
+X29<-(215/11829)*100
+X29
+
+base30<-read.dbf("C:/Users/phdan_000/Music/sdemt310.dbf")#3
+nayarit30<-subset(base30,ENT=="18")
+PEA30<-subset(nayarit30,CLASE1="1")
+DES30<-subset(nayarit30,CLASE2=="2")
+X30<-(279/11838)*100
+X30
+
+base31<-read.dbf("C:/Users/phdan_000/Music/sdemt210.dbf")#2
+nayarit31<-subset(base31,ENT=="18")
+PEA31<-subset(nayarit31,CLASE1="1")
+DES31<-subset(nayarit31,CLASE2=="2")
+X31<-(221/11913)*100
+X31
+
+base32<-read.dbf("C:/Users/phdan_000/Music/sdemt110.dbf")#1
+nayarit32<-subset(base32,ENT=="18")
+PEA32<-subset(nayarit32,CLASE1="1")
+DES32<-subset(nayarit32,CLASE2=="2")
+X32<-(217/11772)*100
+X32
+
+#2009
+
+base33<-read.dbf("C:/Users/phdan_000/Music/sdemt409.dbf")#4
+nayarit33<-subset(base33,ENT=="18")
+PEA33<-subset(nayarit33,CLASE1="1")
+DES33<-subset(nayarit33,CLASE2=="2")
+X33<-(203/11600)*100
+X33
+
+base34<-read.dbf("C:/Users/phdan_000/Music/sdemt309.dbf")#3
+nayarit34<-subset(base34,ENT=="18")
+PEA34<-subset(nayarit34,CLASE1="1")
+DES34<-subset(nayarit34,CLASE2=="2")
+X34<-(244/11515)*100
+X34
+
+base35<-read.dbf("C:/Users/phdan_000/Music/sdemt209.dbf")#2
+nayarit35<-subset(base35,ENT=="18")
+PEA35<-subset(nayarit35,CLASE1="1")
+DES35<-subset(nayarit35,CLASE2=="2")
+X35<-(195/11626)*100
+X35
+
+base36<-read.dbf("C:/Users/phdan_000/Music/sdemt109.dbf")#1
+nayarit36<-subset(base36,ENT=="18")
+PEA36<-subset(nayarit36,CLASE1="1")
+DES36<-subset(nayarit36,CLASE2=="2")
+X36<-(175/11508)*100
+X36
+
+#2008
+
+base37<-read.dbf("C:/Users/phdan_000/Music/sdemt408.dbf")#4
+nayarit37<-subset(base37,ENT=="18")
+PEA37<-subset(nayarit37,CLASE1="1")
+DES37<-subset(nayarit37,CLASE2=="2")
+X37<-(186/11575)*100
+X37
+
+base39<-read.dbf("C:/Users/phdan_000/Music/sdemt308.dbf")#3
+nayarit39<-subset(base39,ENT=="18")
+PEA39<-subset(nayarit39,CLASE1="1")
+DES39<-subset(nayarit39,CLASE2=="2")
+X39<-(185/11575)*100
+X39
+
+base40<-read.dbf("C:/Users/phdan_000/Music/sdemt208.dbf")#2
+nayarit40<-subset(base40,ENT=="18")
+PEA40<-subset(nayarit40,CLASE1="1")
+DES40<-subset(nayarit40,CLASE2=="2")
+X40<-(128/11187)*100
+X40
+
+base41<-read.dbf("C:/Users/phdan_000/Music/sdemt108.dbf")#1
+nayarit41<-subset(base41,ENT=="18")
+PEA41<-subset(nayarit41,CLASE1="1")
+DES41<-subset(nayarit41,CLASE2=="2")
+X41<-(170/11965)*100
+X41
+
+#2007
+base49<-read.dbf("C:/Users/phdan_000/Music/sdemt407.dbf")#4
+nayarit49<-subset(base49,ENT=="18")
+PEA49<-subset(nayarit49,CLASE1="1")
+DES49<-subset(nayarit49,CLASE2=="2")
+X49<-(160/11988)*100
+X49
+
+base50<-read.dbf("C:/Users/phdan_000/Music/sdemt307.dbf")#3
+nayarit50<-subset(base50,ENT=="18")
+PEA50<-subset(nayarit50,CLASE1="1")
+DES50<-subset(nayarit50,CLASE2=="2")
+X50<-(208/11797)*100
+X50
+
+base51<-read.dbf("C:/Users/phdan_000/Music/sdemt207.dbf")#2
+nayarit51<-subset(base51,ENT=="18")
+PEA51<-subset(nayarit51,CLASE1="1")
+DES51<-subset(nayarit51,CLASE2=="2")
+X51<-(161/11859)*100
+X51
+
+base52<-read.dbf("C:/Users/phdan_000/Music/sdemt107.dbf")#1
+nayarit52<-subset(base52,ENT=="18")
+PEA52<-subset(nayarit52,CLASE1="1")
+DES52<-subset(nayarit52,CLASE2=="2")
+X52<-(180/11931)*100
+X52
+
+#2006
+
+
+base422<-read.dbf("C:/Users/phdan_000/Music/sdemt406.dbf")#4
+nayarit422<-subset(base422,ENT=="18")
+PEA422<-subset(nayarit422,CLASE1="1")
+DES422<-subset(nayarit422,CLASE2=="2")
+X422<-(167/11887)*100
+X422
+
+base42<-read.dbf("C:/Users/phdan_000/Music/sdemt306.dbf")#3
+nayarit42<-subset(base42,ENT=="18")
+PEA42<-subset(nayarit42,CLASE1="1")
+DES42<-subset(nayarit42,CLASE2=="2")
+X42<-(197/11903)*100
+X42
+
+base43<-read.dbf("C:/Users/phdan_000/Music/sdemt206.dbf")#2
+nayarit43<-subset(base43,ENT=="18")
+PEA43<-subset(nayarit43,CLASE1="1")
+DES43<-subset(nayarit43,CLASE2=="2")
+X43<-(158/12279)*100
+X43
+
+base44<-read.dbf("C:/Users/phdan_000/Music/sdemt106.dbf")#11
+nayarit44<-subset(base2,ENT=="18")
+PEA44<-subset(nayarit3,CLASE1="1")
+DES44<-subset(nayarit3,CLASE2=="2")
+X44<-(215/11414)*100
+X44
+
+#2005
+base45<-read.dbf("C:/Users/phdan_000/Music/sdemt405.dbf")
+nayarit45<-subset(base45,ENT=="18")
+PEA45<-subset(nayarit45,CLASE1="1")
+DES45<-subset(nayarit45,CLASE2=="2")
+X45<-(124/12234)*100
+X45
+
+base46<-read.dbf("C:/Users/phdan_000/Music/sdemt305.dbf")
+nayarit46<-subset(base46,ENT=="18")
+PEA46<-subset(nayarit46,CLASE1="1")
+DES46<-subset(nayarit46,CLASE2=="2")
+X46<-(169/12269)*100
+X46
+
+base47<-read.dbf("C:/Users/phdan_000/Music/sdemt205.dbf")
+nayarit47<-subset(base47,ENT=="18")
+PEA47<-subset(nayarit47,CLASE1="1")
+DES47<-subset(nayarit47,CLASE2=="2")
+X47<-(132/12363)*100
+X47
+
+base48<-read.dbf("C:/Users/phdan_000/Music/sdemt105.dbf")
+nayarit48<-subset(base48,ENT=="18")
+PEA48<-subset(nayarit48,CLASE1="1")
+DES48<-subset(nayarit48,CLASE2=="2")
+X48<-(165/12054)*100
+X48
+
+DESO<-data.frame(X,X2,X3,X4,X5,X6,X7,X8,X9,X10,
+                 X11,X12,X14,X15,X16,X17,X18,X19,X20,X200,
+                 X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31,X32,X33,
+                 X34,X35,X36,X37,X39,X40,
+                 X41,X49,X50,X51,X52,X42,X422,x43,x44,x45,
+                 X46,X47,X48)
+
+asa1<- subset(base,REMUNE2C==2)
+asa2<- subset(base2,REMUNE2C==2)
+asa3<- subset(base3,REMUNE2C==2)
+asa4<- subset(base4,REMUNE2C==2)
+asa5<- subset(base5,REMUNE2C==2)
+asa6<- subset(base6,REMUNE2C==2)
+asa7<- subset(base7,REMUNE2C==2)
+asa8<- subset(base8,REMUNE2C==2)
+asa10<- subset(base9,REMUNE2C==2)
+asa11<- subset(base10,REMUNE2C==2)
+asa12<- subset(base11,REMUNE2C==2)
+asa13<- subset(base12,REMUNE2C==2)
+asa14<- subset(base14,REMUNE2C==2)
+asa15<- subset(base15,REMUNE2C==2)
+asa16<- subset(base16,REMUNE2C==2)
+asa17<- subset(base17,REMUNE2C==2)
+asa18<- subset(base18,REMUNE2C==2)
+asa19<- subset(base19,REMUNE2C==2)
+asa19<- subset(base20,REMUNE2C==2)
+asal20<- subset(base200,REMUNE2C==2)
+asa121<- subset(base21,REMUNE2C==2)
+asa122<- subset(base22,REMUNE2C==2)
+asa123<- subset(base23,REMUNE2C==2)
+asa124<- subset(base24,REMUNE2C==2)
+asa125<- subset(base24,REMUNE2C==2)
+asa126<- subset(base25,REMUNE2C==2)
+asa127<- subset(base26,REMUNE2C==2)
+asa128<- subset(base27,REMUNE2C==2)
+asa129<- subset(base28,REMUNE2C==2)
+asa130<- subset(base29,REMUNE2C==2)
+asa131<- subset(base30,REMUNE2C==2)
+asa132<- subset(base31,REMUNE2C==2)
+asa133<- subset(base32,REMUNE2C==2)
+asa134<- subset(base33,REMUNE2C==2)
+asa135<- subset(base34,REMUNE2C==2)
+asa136<- subset(base35,REMUNE2C==2)
+asa137<- subset(base37,REMUNE2C==2)
+asa138<- subset(base39,REMUNE2C==2)
+asa139<- subset(base40,REMUNE2C==2)
+asa140<- subset(base41,REMUNE2C==2)
+asa141<- subset(base49,REMUNE2C==2)
+asa142<- subset(base50,REMUNE2C==2)
+asa143<- subset(base51,REMUNE2C==2)
+asa144<- subset(base52,REMUNE2C==2)
+asa145<- subset(base422,REMUNE2C==2)
+asa146<- subset(base42,REMUNE2C==2)
+asa147<- subset(base43,REMUNE2C==2)
+asa148<- subset(base44,REMUNE2C==2)
+asa149<- subset(base45,REMUNE2C==2)
+asa150<- subset(base46,REMUNE2C==2)
+asa151<- subset(base47,REMUNE2C==2)
+asa152<- subset(base48,REMUNE2C==2)
+
+tasaasa1 <- (length(t(asa1)[1,])/length(t(PEA)[1,]))*100
+tasaasa2 <- (length(t(asa2)[1,])/length(t(PEA2)[1,]))*100
+tasaasa3 <- (length(t(asa3)[1,])/length(t(PEA3)[1,]))*100
+tasaasa4 <- (length(t(asa4)[1,])/length(t(PEA4)[1,]))*100
+tasaasa5<-  (length(t(asa5)[1,])/length(t(PEA5)[1,]))*100
+tasaasa6 <- (length(t(asa6)[1,])/length(t(PEA6)[1,]))*100
+tasaasa7 <- (length(t(asa7)[1,])/length(t(PEA7)[1,]))*100
+tasaasa8<-  (length(t(asa8)[1,])/length(t(PEA8)[1,]))*100
+tasaasa9 <- (length(t(asa9)[1,])/length(t(PEA9)[1,]))*100
+tasaasa10 <- (length(t(asa10)[1,])/length(t(PEA10)[1,]))*100
+tasaasa11 <- (length(t(asa11)[1,])/length(t(PEA11)[1,]))*100
+tasaasa12 <- (length(t(asa12)[1,])/length(t(PEA12)[1,]))*100
+tasaasa13<-  (length(t(asa13)[1,])/length(t(PEA14)[1,]))*100
+tasaasa14 <- (length(t(asa14)[1,])/length(t(PEA15)[1,]))*100
+tasaasa15 <- (length(t(asa15)[1,])/length(t(PEA16)[1,]))*100
+tasaasa16 <- (length(t(asa16)[1,])/length(t(PEA17)[1,]))*100
+tasaasa17 <- (length(t(asa17)[1,])/length(t(PEA18)[1,]))*100
+tasaasa18<-  (length(t(asa18)[1,])/length(t(PEA19)[1,]))*100
+tasaasa19 <- (length(t(asa19)[1,])/length(t(PEA20)[1,]))*100
+tasaasa20 <- (length(t(asa19)[1,])/length(t(PEA200)[1,]))*100
+tasaasa21 <- (length(t(asa19)[1,])/length(t(PEA21)[1,]))*100
+tasaasa22 <- (length(t(asa19)[1,])/length(t(PEA22)[1,]))*100
+tasaasa23 <- (length(t(asa19)[1,])/length(t(PEA23)[1,]))*100
+tasaasa24 <- (length(t(asa19)[1,])/length(t(PEA24)[1,]))*100
+tasaasa25 <- (length(t(asa19)[1,])/length(t(PEA25)[1,]))*100
+tasaasa26 <- (length(t(asa19)[1,])/length(t(PEA26)[1,]))*100
+tasaasa27 <- (length(t(asa19)[1,])/length(t(PEA27)[1,]))*100
+tasaasa28 <- (length(t(asa19)[1,])/length(t(PEA28)[1,]))*100
+tasaasa29 <- (length(t(asa19)[1,])/length(t(PEA29)[1,]))*100
+tasaasa30 <- (length(t(asa19)[1,])/length(t(PEA30)[1,]))*100
+tasaasa31 <- (length(t(asa19)[1,])/length(t(PEA32)[1,]))*100
+tasaasa32 <- (length(t(asa19)[1,])/length(t(PEA33)[1,]))*100
+tasaasa33 <- (length(t(asa19)[1,])/length(t(PEA34)[1,]))*100
+tasaasa34 <- (length(t(asa19)[1,])/length(t(PEA35)[1,]))*100
+tasaasa35 <- (length(t(asa19)[1,])/length(t(PEA36)[1,]))*100
+tasaasa36 <- (length(t(asa19)[1,])/length(t(PEA37)[1,]))*100
+tasaasa37 <- (length(t(asa19)[1,])/length(t(PEA39)[1,]))*100
+tasaasa38 <- (length(t(asa19)[1,])/length(t(PEA41)[1,]))*100
+tasaasa39 <- (length(t(asa19)[1,])/length(t(PEA49)[1,]))*100
+tasaasa40 <- (length(t(asa19)[1,])/length(t(PEA50)[1,]))*100
+tasaasa41 <- (length(t(asa19)[1,])/length(t(PEA51)[1,]))*100
+tasaasa42 <- (length(t(asa19)[1,])/length(t(PEA52)[1,]))*100
+tasaasa43 <- (length(t(asa19)[1,])/length(t(PEA422)[1,]))*100
+tasaasa44 <- (length(t(asa19)[1,])/length(t(PEA42)[1,]))*100
+tasaasa45<- (length(t(asa19)[1,])/length(t(PEA43)[1,]))*100
+tasaasa46 <- (length(t(asa19)[1,])/length(t(PEA44)[1,]))*100
+tasaasa47<- (length(t(asa19)[1,])/length(t(PEA45)[1,]))*100
+tasaasa48<- (length(t(asa19)[1,])/length(t(PEA46)[1,]))*100
+tasaasa49<- (length(t(asa19)[1,])/length(t(PEA47)[1,]))*100
+tasaasa50<- (length(t(asa19)[1,])/length(t(PEA48)[1,]))*100
+
+serieass<- data.frame(tasaasa,tasaasa1,tasaasa2,tasaasa3,
+                      tasaasa4,tasaasa5,tasaasa6,tasaasa7,tasaasa,tasaasa,tasaasa
+                      tasaasa,tasaasa,tasaasa,tasaasa
+                      tasaasa,tasaasa,tasaasa,tasaasa,tasaasa,tasaasa,tasaasa,tasaasa
+                      tasaasa,tasaasa,tasaasa,tasaasa,tasaasa,tasaasa,
+                      tasaasa,tasaasa,tasaasa,tasaasa,tasaasa,tasaasa,tasaasa,tasaasa)
+TIL1
+T1<- subset(base,REMUNE2C==2)
+T2<- subset(base2,REMUNE2==1)
+T3<- subset(base3,REMUNE2==1)
+T4<- subset(base4,REMUNE2=1)
+T5<- subset(base5,REMUNE2==1)
+T6<- subset(base6,REMUNE2==1)
+T7<- subset(base7,REMUNE2==1)
+T8<- subset(base8,REMUNE2==1)
+T10<- subset(base9,REMUNE2==1)
+T11<- subset(base10,REMUNE2==1)
+T12<- subset(base11,REMUNE2==1)
+T13<- subset(base12,REMUNE2==1)
+T14<- subset(base14,REMUNE2==1)
+T15<- subset(base15,REMUNE2==1)
+T16<- subset(base16,REMUNE2==1)
+T17<- subset(base17,REMUNE2==1)
+T18<- subset(base18,REMUNE2==1)
+T19<- subset(base19,REMUNE2==1)
+T19<- subset(base20,REMUNE2==1)
+Tl2<- subset(base200,REMUNE2==1)
+T21<- subset(base21,REMUNE2==1)
+T22<- subset(base22,REMUNE2==1)
+T23<- subset(base23,REMUNE2==1)
+T24<- subset(base24,REMUNE2==1)
+T25<- subset(base24,REMUNE2==1)
+T26<- subset(base25,REMUNE2==1)
+T27<- subset(base26,REMUNE2==1)
+T28<- subset(base27,REMUNE2==1)
+T29<- subset(base28,REMUNE2==1)
+T30<- subset(base29,REMUNE2==1)
+T31<- subset(base30,REMUNE2==1)
+T32<- subset(base31,REMUNE2==)
+T33<- subset(base32,REMUNE2==1)
+T34<- subset(base33,REMUNE2==1)
+T35<- subset(base34,REMUNE2==1)
+T36<- subset(base35,REMUNE2==1)
+T37<- subset(base37,REMUNE2==)
+T38<- subset(base39,REMUNE2==1)
+T39<- subset(base40,REMUNE2==1)
+T40<- subset(base41,REMUNE2==1)
+T41<- subset(base49,REMUNE2==1)
+T42<- subset(base50,REMUNE2==1)
+T43<- subset(base51,REMUNE2==1)
+T44<- subset(base52,REMUNE2==1)
+T45<- subset(base422,REMUNE2==1)
+T46<- subset(base42,REMUNE2==1)
+T47<- subset(base43,REMUNE2==1)
+T48<- subset(base44,REMUNE2==1)
+T49<- subset(base45,REMUNE2==1)
+T50<- subset(base46,REMUNE2==1)
+T51<- subset(base47,REMUNE2==1)
+T52<- subset(base48,REMUNE2==1)
+
+tasa <- (length(t(T1)[1,])/length(t(PEA)[1,]))*100
+tasa2 <- (length(t(T2)[1,])/length(t(PEA2)[1,]))*100
+tasa3 <- (length(t(T3)[1,])/length(t(PEA3)[1,]))*100
+tasa4 <- (length(t(T4)[1,])/length(t(PEA4)[1,]))*100
+tasa5<-  (length(t(asa5)[1,])/length(t(PEA5)[1,]))*100
+tasa6 <- (length(t(asa6)[1,])/length(t(PEA6)[1,]))*100
+tasa7 <- (length(t(asa7)[1,])/length(t(PEA7)[1,]))*100
+tasa8<-  (length(t(asa8)[1,])/length(t(PEA8)[1,]))*100
+tasa9 <- (length(t(asa9)[1,])/length(t(PEA9)[1,]))*100
+tasa10 <- (length(t(asa10)[1,])/length(t(PEA10)[1,]))*100
+tasa11 <- (length(t(asa11)[1,])/length(t(PEA11)[1,]))*100
+tasa12 <- (length(t(asa12)[1,])/length(t(PEA12)[1,]))*100
+tasa13<-  (length(t(asa13)[1,])/length(t(PEA14)[1,]))*100
+tasa14 <- (length(t(asa14)[1,])/length(t(PEA15)[1,]))*100
+tasa15 <- (length(t(asa15)[1,])/length(t(PEA16)[1,]))*100
+tasa16 <- (length(t(asa16)[1,])/length(t(PEA17)[1,]))*100
+tasa17 <- (length(t(asa17)[1,])/length(t(PEA18)[1,]))*100
+tasa18<-  (length(t(asa18)[1,])/length(t(PEA19)[1,]))*100
+tasa19 <- (length(t(asa19)[1,])/length(t(PEA20)[1,]))*100
+tasa20 <- (length(t(asa19)[1,])/length(t(PEA200)[1,]))*100
+tasaasa21 <- (length(t(asa19)[1,])/length(t(PEA21)[1,]))*100
+tasaasa22 <- (length(t(asa19)[1,])/length(t(PEA22)[1,]))*100
+tasaasa23 <- (length(t(asa19)[1,])/length(t(PEA23)[1,]))*100
+tasaasa24 <- (length(t(asa19)[1,])/length(t(PEA24)[1,]))*100
+tasaasa25 <- (length(t(asa19)[1,])/length(t(PEA25)[1,]))*100
+tasaasa26 <- (length(t(asa19)[1,])/length(t(PEA26)[1,]))*100
+tasaasa27 <- (length(t(asa19)[1,])/length(t(PEA27)[1,]))*100
+tasaasa28 <- (length(t(asa19)[1,])/length(t(PEA28)[1,]))*100
+tasaasa29 <- (length(t(asa19)[1,])/length(t(PEA29)[1,]))*100
+tasaasa30 <- (length(t(asa19)[1,])/length(t(PEA30)[1,]))*100
+tasaasa31 <- (length(t(asa19)[1,])/length(t(PEA32)[1,]))*100
+tasaasa32 <- (length(t(asa19)[1,])/length(t(PEA33)[1,]))*100
+tasaasa33 <- (length(t(asa19)[1,])/length(t(PEA34)[1,]))*100
+tasaasa34 <- (length(t(asa19)[1,])/length(t(PEA35)[1,]))*100
+tasaasa35 <- (length(t(asa19)[1,])/length(t(PEA36)[1,]))*100
+tasaasa36 <- (length(t(asa19)[1,])/length(t(PEA37)[1,]))*100
+tasaasa37 <- (length(t(asa19)[1,])/length(t(PEA39)[1,]))*100
+tasaasa38 <- (length(t(asa19)[1,])/length(t(PEA41)[1,]))*100
+tasaasa39 <- (length(t(asa19)[1,])/length(t(PEA49)[1,]))*100
+tasaasa40 <- (length(t(asa19)[1,])/length(t(PEA50)[1,]))*100
+tasaasa41 <- (length(t(asa19)[1,])/length(t(PEA51)[1,]))*100
+tasaasa42 <- (length(t(asa19)[1,])/length(t(PEA52)[1,]))*100
+tasaasa43 <- (length(t(asa19)[1,])/length(t(PEA422)[1,]))*100
+tasaasa44 <- (length(t(asa19)[1,])/length(t(PEA42)[1,]))*100
+tasaasa45<- (length(t(asa19)[1,])/length(t(PEA43)[1,]))*100
+tasaasa46 <- (length(t(asa19)[1,])/length(t(PEA44)[1,]))*100
+tasaasa47<- (length(t(asa19)[1,])/length(t(PEA45)[1,]))*100
+tasaasa48<- (length(t(asa19)[1,])/length(t(PEA46)[1,]))*100
+tasaasa49<- (length(t(asa19)[1,])/length(t(PEA47)[1,]))*100
+tasaasa50<- (length(t(asa19)[1,])/length(t(PEA48)[1,]))*100
