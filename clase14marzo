@@ -1,0 +1,32 @@
+acci<-read.csv("C:/Users/USUARIO/Music/accidentes.csv")
+View(acci)
+x <-rbind(acci)[6:17,-1]######
+#View(x)
+#acci<-acci[-1,]
+#acci<-acci[,-1]
+#acci<-acci[,-4]
+#View()
+trs<-t(t(x))
+ctrs<-c(trs)#acomodar como entradas de arrays
+cctss<-ts(ctrs,frequency = 12,start = 1997)
+#as.numeric(ccts)
+View(cctss)
+install.packages("fpp")
+require(fpp)
+#SES EN R debemos proponer valores para alfa y sabemos que 0<alfa<1
+###SUAVIZADO EXPONENCIAL SIMPLE (SES)
+x11()
+plot(cctss)
+mod1<-ses(cctss,alpha=.1,h=12)
+mod2<-ses(cctss,alpha=.5,h=12)
+mod3<-ses(cctss,alpha=.9,h=12)###a mas peso de alpha
+names(mod1)
+x11()
+plot(mod1,ylab = "Accidentes",xlab = "Año",main = "Número de accidentes",
+     type = "o")
+lines(mod1$mean,col="green",type="o")
+lines(mod2$mean,col="blue",type="o")
+lines(mod3$mean,col="pink",type="o")
+legend("topleft",lty = 1,col = c("black","green","blue","pink"),
+       c("Datos originales",expression(alpha==.1),expression(alpha==.5),
+         expression(alpha==.9)),pch=1)###pch cambia la forma de linea de etiqueta
