@@ -1,0 +1,17 @@
+pib<-read.csv("C:/Users/USUARIO/Desktop/PI.csv",header = F)#HEADER SIN ENCABEZADO 
+pibts<-ts(pib,start = 1960,frequency=1)
+install.packages("fpp")
+require(fpp)
+mod1<-ses(pibts,alpha=.1,initial = "simple",h=5)
+mod1<-ses(pibts,initial = "simple",h=2)
+mod2<-holt(pibts,alpha=.8,beta = .5,initial = "simple",h=5)
+mod1$fitted
+X11()
+plot(mod1)
+lines(mod1$fitted)
+x11()
+plot(mod1)
+lines(mod1$fitted,col="green")
+lines(mod2$fitted,col="blue")
+lines(mod1$mean,col="green")
+lines(mod2$mean,col="blue")
