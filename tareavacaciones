@@ -1,0 +1,93 @@
+# tarea
+# esta misma serie la cortan 4 o 5 peridos antes de la ultima  observacion y grafican ajustados y pronosticos
+###grafica 1 funcion fitted
+# tener serie hasta el 2015 y desaparecer hasta el 2010 
+# y pronosticar hasta el 2015 para ver cual ajustado se acerca mas a los 5 periodos cortados (ajustados o pronosticos)
+# grafica 2 graficar el mejor modelo solo
+deso <- read.csv("C:/Users/phdan_000/Documents/Libro1.csv")[-1]
+## acciones de bimbo del 2010 al 2018 mensual
+deso
+dests <- ts(deso,start=2017,frequency=254)
+
+
+install.packages("fpp")
+require(fpp)
+dests
+##########################################################
+desocmod1 <- ses(dests,initial = "simple",alpha=0.8)
+mod2 <- holt(dests, alpha = 0.8,beta = 0.5, initial = "simple")
+mod3 <- holt(dests,alpha = .8,beta = 0.5,initial = "simple",exponential = T)# h-exponencial
+mod4 <- holt(dests,damped = T)# aditivio
+mod5 <- holt(dests,exponential = T,damped = T)# amortiguado multi
+###############################################################
+# grafica 1 con valores ajustados
+
+x11()
+plot(desocmod1,main = "Precio cierre",col = "red")
+lines(desocmod1$fitted,col="red")#
+lines(mod2$fitted,col="green")##
+lines(mod3$fitted,col="pink")##
+lines(mod4$fitted,col="black")##
+lines(mod5$fitted,col="purple")##
+lines(dests,col="blue")##
+legend("topleft",lty = 1,col=c("red","green","pink","black","purple","blue"),
+       legend=c("ajustadosses","ajustadosholt","h-exponencial","aditivo","multiplicatvo","datos"))
+######################################################
+# grafica 2
+desocmod1 <- ses(dests,initial = "simple",alpha=0.8,h=10)
+mod2 <- holt(dests, alpha = 0.8,beta = 0.5, initial = "simple",h=10)
+mod3 <- holt(dests,alpha = .8,beta = 0.5,initial = "simple",exponential = T,h=10)# h-exponencial
+mod4 <- holt(dests,damped = T,h=10)# aditivio
+mod5 <- holt(dests,exponential = T,damped = T,h=10)# amortiguado multi
+x11()
+plot(desocmod1,main = "Precio cierre",col = "red")
+lines(desocmod1$mean,col="red")#
+lines(mod2$mean,col="green")##
+lines(mod3$mean,col="pink")##
+lines(mod4$mean,col="black")##
+lines(mod5$mean,col="purple")##
+legend("topleft",lty = 1,col=c("red","green","pink","black","purple"),
+       legend=c("ajustadosses","ajustadosholt","h-exponencial","aditivo","multiplicatvo"))
+#############################################################################################
+
+x11()
+plot(desocmod1,main = "Precio cierre",col = "red")
+lines(desocmod1$mean,col="red")#
+lines(mod2$mean,col="green")##
+lines(mod3$mean,col="pink")##
+lines(mod4$mean,col="black")##
+lines(mod5$mean,col="purple")##
+lines(mod2$fitted,col="green")##
+lines(mod3$fitted,col="pink")##
+lines(mod4$fitted,col="black")##
+lines(mod5$fitted,col="purple")##
+legend("topleft",lty = 1,col=c("red","green","pink","black","purple"),
+       legend=c("ajustadosses","ajustadosholt","h-exponencial","aditivo","multiplicatvo"))
+
+# el modelo con el que me quedo es con el holt exponential ya que sigue la tendencia de la serie
+# si los datos van puesta abajo el modelo igual sigue esa tendencia o viceversa
+#################################################################################################
+## partir la serie
+seriem10.15<-window(dests,start=c(2010,1), end=c(2017,1))
+
+desocmod1 <- ses(seriem10.15,initial = "simple",alpha=0.8,h=10)
+mod2 <- holt(seriem10.15, alpha = 0.8,beta = 0.5, initial = "simple",h=10)
+mod3 <- holt(seriem10.15,alpha = .8,beta = 0.5,initial = "simple",exponential = T,h=10)# h-exponencial
+mod4 <- holt(seriem10.15,damped = T,h=10)# aditivio
+mod5 <- holt(seriem10.15,exponential = T,damped = T,h=10)# amortiguado multi
+x11()
+plot(desocmod1,main = "Precio cierre CEMEX",col = "red")
+lines(desocmod1$mean,col="red")#
+lines(mod2$mean,col="green")##
+lines(mod3$mean,col="pink")##
+lines(mod4$mean,col="black")##
+lines(mod5$mean,col="purple")##
+lines(dests,col="blue")##
+legend("topleft",lty = 1,col=c("red","green","pink","black","purple","blue"),
+       legend=c("ajustadosses","ajustadosholt","h-exponencial","aditivo","multiplicatvo","datos"))
+#####################################################################
+# mejor modelo 
+mod3 <- holt(seriem10.15,alpha = .8,beta = 0.5,initial = "simple",exponential = T,h=10)# h-exponencial
+x11()
+plot(mod3,main = "Precio cierre",col = "red")
+lines(mod3$mean,col="pink")##
