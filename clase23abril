@@ -1,0 +1,23 @@
+PIB<-read.csv("C:/Users/USUARIO/Desktop/PI (1).csv")
+PIBts<-ts(PIB,frequency = 1, start = 1961)
+View(PIB)
+install.packages("fpp")
+require(fpp)
+mod1<-auto.arima(PIBts,seasonal=F)
+mod1
+#ARIMA(0,1,2)
+#TETA=.6521+TETA2 2041
+plot(forecast(mod1,h=10))
+
+tasaasa<-read.csv("C:/Users/USUARIO/Desktop/tasa asa.csv")
+tasasats<-ts(tasaasa,frequency = 4,start = 2005)
+mod11<-auto.arima(tasasats,seasonal=F)
+mod11
+plot(forecast(mod1,h=10))
+# yt=-.4492teta-.3099teta2
+apple<-read.csv("C:/Users/USUARIO/Downloads/AAPL.MX.csv")
+applets<-ts(apple,frequency = 252,start = 2017)
+mod1<-auto.arima(apple,seasonal = F)
+mod1
+plot(forecast(mod1,h=10))
+#yt= no es un buen modelo para pronosticar un modelo arima
