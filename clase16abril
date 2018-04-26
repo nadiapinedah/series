@@ -1,0 +1,7 @@
+deso<-read.csv("C:/Users/USUARIO/Downloads/deso.csv")
+desots<-ts(deso,start = 2005,frequency = 4)
+require(fpp)
+mod1<-auto.arima(desots,seasonal = F)# f porque no es una serie estacional 
+mod1
+x11()
+plot(forecast(mod1,h=10))
