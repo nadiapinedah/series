@@ -1,0 +1,111 @@
+bimbo<-read.csv("C:/Users/USUARIO/Desktop/BIMBOA.MX.csv")
+View(bimbo)
+bimbots<-ts(bimbo,frequency=252,start = 2017)
+########vamos a revisar si la serie es estacionaria 
+#####eso lo hacemos con un adf.test
+install.packages("fpp")
+require(fpp)
+adf.test(bimbots)
+#####en esta pruba esperamos un p- value menor a .05
+##sin embargo en la serie bimbots obtenemos un p- value
+#de .08 por lo que hay que aplicar una diferenciacion 
+#para convertir lka serie en estacionalria 
+dbimbots<-diff(bimbots)######diff diferenciacion a la st
+adf.test(dbimbots)#para convertirla en estacionaria
+##ahora que tenemos a la st estacionaria ya podemos aplicar un modelo arima, por lo que hay que elegir
+#los valores de p,d y q, para elegir los valores de p y q 
+#se utiliza la funcion de autocrrelacion y la funcion 
+#de autocorrelacion parcial (pacf)
+##primero aplicamos la funcion de autocorrelacion para elegir el 
+#valor de q 
+x11()
+acf(dbimbots)
+##una vez que aplicamos el acf vamos a observar la 
+#grafica y ver cuantas lineas sobrepasan el margen 
+#y el numero e lineas son el valor de q
+x11()
+pacf(dbimbots)
+mod1bim<-Arima(bimbots,order=c(0,1,0))
+mod1bim
+##revisar el AICC 
+mod2bim<-Arima(bimbots,order=c(1,1,2))
+mod2bim
+mod3bim<-Arima(bimbots,order=c(3,1,2))
+mod3bim
+mod4bim<-Arima(bimbots,order=c(2,1,2))
+mod4bim
+###elegimo el mod4bimb
+mod4<-forecast(mod4bim,h=12)
+x11()
+plot(forecast(mod4bim,h=12),include = 45)
+mod5bim<-auto.arima(bimbots)     
+mod5bim
+x11()
+plot(forecast(mod5bim,h=12),include = 45)
+############ELEGITR DOS SERIES DE TIEMPO DIFERENTES  A LAS QUE HEMOS VISTO EN CLASE REPETIR EL PROCEDIMIENTO
+#PARA ELEGIR EL MODELO ARIMA "MEJOR SEGUN LOS CRITERIOS DE AICC Y
+#COMPARARLOS CON EL MODELO AUTO,ARIMA 
+infla<-read.csv("C:/Users/USUARIO/Desktop/Popular Indicators.csv")
+View(infla)
+inflats<-ts(infla[,1],frequency = 1,start = 2000)
+View(inflats)
+
+adf.test(inflats)
+dinflats<-diff(inflats)######diff diferenciacion a la st
+adf.test(dinflats)#para convertirla en estacionaria
+x11()
+acf(dinflats)
+
+x11()
+pacf(dinflats)
+mod1infla<-Arima(inflats,order=c(0,1,0))
+mod1infla
+##revisar el AICC 
+mod2infla<-Arima(inflats,order=c(1,1,2))
+mod2infla
+mod3infla<-Arima(inflats,order=c(3,1,2))
+mod3infla
+mod4infla<-Arima(inflats,order=c(2,1,2))
+mod4infla
+###elegimo el mod1
+mod1<-forecast(mod1infla,h=12)
+x11()
+plot(forecast(mod1infla,h=12),include = 45)
+mod5infla<-auto.arima(inflats)     
+mod5infla
+x11()
+plot(forecast(mod5infla,h=12),include = 45)
+####
+
+expots<-ts(infla[,2],frequency = 1,start = 2000)
+View(expots)
+x11()
+plot(expots)
+adf.test(expots)
+diffln<-(log(expots))
+dexpots<-diff(diffln)######diff diferenciacion a la st
+despo<-diff(dexpots)
+adf.test(dexpots)#para convertirla en estacionaria
+x11()
+acf(dexpots)
+
+x11()
+pacf(dexpots)
+mod1expo<-Arima(expots,order=c(0,1,0))
+mod1expo
+##revisar el AICC 
+mod2expo<-Arima(expots,order=c(1,1,2))
+mod2expo
+mod3expo<-Arima(expots,order=c(3,1,2))
+mod3expo
+mod4expo<-Arima(expots,order=c(2,1,2))
+mod4expots
+###elegimo el mod1
+mod1<-forecast(mod1expots,h=12)
+x11()
+plot(forecast(mod1expots,h=12),include = 45)
+mod5expots<-auto.arima(expots)     
+mod5expots
+x11()
+plot(forecast(mod5expots,h=12),include = 45)
+####
