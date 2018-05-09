@@ -1,0 +1,132 @@
+#--------------------Procedimiento para aplicar modelos ARIMA----------------
+#graficar la serie para identificar componentes de la serie 
+#si es necesario transformarcon logaritmos y/o aplicar diferenciacion para estabilizar la serie(estacionalidad)
+#examina acf/pacf para proponer los valores de p y q
+##elige el mejor modelo mediante ACC EL MEJOR ES EL MENOR 
+# Para fortalecer el procedimietno de la aplicacion de los modelos Arima se debe tener en cuenta lo sig:
+#1.- identificacion : se debe identificar cualquier tipo de informacion que pueda tener impacto sobre la
+#serie de tiempo con la finalidad de proponer diversos modelos Arima , en esta etapa se debe hacer el analisis
+#de la estacionalidad 
+#---------estacionariedad de variazas -----transformacion necesarias 
+#-------estacionariedad de media---num de diferenciaciones para convertir la st en estacionaria
+#Por otro lado , se debe seleccionar los ordenes p y q , para la seleccion se debe utilizar los graficos
+#y correlogramas de acf y PACF
+#
+install.packages("fpp")
+require(fpp)
+tasas<-read.csv("C:/Users/USUARIO/Desktop/tasas.csv")
+View(tasas)
+
+tasainfots<-ts(tasas[,1],frequency = 4,start = 2005, end=2015)
+View(tasainfots)
+
+adf.test(tasainfots)
+dinfots<-diff(tasainfots)######diff diferenciacion a la st
+adf.test(dinfots)#para convertirla en estacionaria
+x11()
+acf(dinfots)
+
+x11()
+pacf(dinfots)
+mod1info<-Arima(tasainfots,order=c(0,1,0))
+mod1info
+##revisar el AICC 
+mod2info<-Arima(tasainfots,order=c(1,1,2))
+mod2info
+mod3info<-Arima(tasainfots,order=c(3,1,2))
+mod3info
+mod4info<-Arima(tasainfots,order=c(2,1,2))
+mod4info
+###elegimo el mod1
+mod1<-forecast(mod1info,h=12)
+x11()
+plot(forecast(mod1info,h=12),include = 45)
+mod5info<-auto.arima(tasainfots)     
+mod5info
+x11()
+plot(forecast(mod5info,h=12),include = 45)
+####
+
+tasaasats<-ts(tasas[,2],frequency = 4,start = 2005, end = 2015)
+adf.test(tasaasats)
+dasats<-diff(tasaasats)######diff diferenciacion a la st
+adf.test(dasats)#para convertirla en estacionaria
+x11()
+acf(dasats)
+
+x11()
+pacf(dasats)
+mod1asa<-Arima(tasaasats,order=c(0,1,0))
+mod1asa
+##revisar el AICC 
+mod2asa<-Arima(tasaasats,order=c(1,1,2))
+mod2asa
+mod3asa<-Arima(tasaasats,order=c(3,1,2))
+mod3asa
+mod4asa<-Arima(tasaasats,order=c(2,1,2))
+mod4asa
+###elegimo el mod1
+mod1<-forecast(mod1info,h=12)
+x11()
+plot(forecast(mod1info,h=12),include = 45)
+mod5asa<-auto.arima(tasaasats)     
+mod5asa
+x11()
+plot(forecast(mod5asa,h=12),include = 45)
+####
+
+tasadesots<-ts(tasas[,3],frequency = 4,start = 2005, end=2015)
+
+adf.test(tasaasats)
+dasats<-diff(tasaasats)######diff diferenciacion a la st
+adf.test(dasats)#para convertirla en estacionaria
+x11()
+acf(dasats)
+
+x11()
+pacf(dasats)
+mod1asa<-Arima(tasaasats,order=c(0,1,0))
+mod1asa
+##revisar el AICC 
+mod2asa<-Arima(tasaasats,order=c(1,1,2))
+mod2asa
+mod3asa<-Arima(tasaasats,order=c(3,1,2))
+mod3asa
+mod4asa<-Arima(tasaasats,order=c(2,1,2))
+mod4asa
+###elegimo el mod4
+mod1<-forecast(mod4asa,h=12)
+x11()
+plot(forecast(mod4asa,h=12),include = 45)
+mod5asa<-auto.arima(tasaasats)     
+mod5asa
+x11()
+plot(forecast(mod5asa,h=12),include = 45)
+####
+tasasubts<-ts(tasas[,4],frequency = 4,start = 2005,end = 2015)
+adf.test(tasasubts)
+dsubts<-diff(tasasubts)######diff diferenciacion a la st
+adf.test(dsubts)#para convertirla en estacionaria
+x11()
+acf(dsubts)
+
+x11()
+pacf(dsubts)
+mod1sub<-Arima(tasasubts,order=c(0,1,0))
+mod1sub
+##revisar el AICC 
+mod2sub<-Arima(tasasubts,order=c(1,1,2))
+mod2sub
+mod3sub<-Arima(tasasubts,order=c(3,1,2))
+mod3sub
+mod4sub<-Arima(tasasubts,order=c(2,1,2))
+mod4sub
+###elegimo el mod1
+mod2<-forecast(mod2sub,h=12)
+x11()
+plot(forecast(mod2sub,h=12),include = 45)
+mod5sub<-auto.arima(tasasubts)     
+mod5sub
+x11()
+plot(forecast(mod5sub,h=12),include = 45)
+####
